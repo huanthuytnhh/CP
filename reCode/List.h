@@ -28,7 +28,7 @@ class List{
         int static NXB_count;
         // QUY TAC DAT TEN : phần đầu là nơi chứa , tiếp theo là tên hàm chữ đầu không viết hoa
         ~List();
-        void get_initialNum(ifstream &);
+        static void get_initialNum(ifstream &);
 //          getter
         void List_getTacGia(ifstream&);
         void List_getTapChi(ifstream&);
@@ -65,19 +65,19 @@ class List{
         void List_sapXepBaoTheoBao_ten(bool(*compare)(Bao,Bao));
         void List_sapXepBaoTheoNam(bool(*compare)(Bao,Bao)); 
         // cac ham dung khi muon in cac thong tin ra man hinh
-        string List_getTacGia_tenTheoTacGia_id(string);
-        string List_getTacGia_hoTheoTacGia_id(string);
-        string List_getTapChi_tenTheoTapChi_id(string);
-        string List_getNXB_idTheoTapChi_id(string);
+        string List_getTacGia_tenTheoTacGia_id(const string&);
+        string List_getTacGia_hoTheoTacGia_id(const string&);
+        string List_getTapChi_tenTheoTapChi_id(const string&);
+        string List_getNXB_idTheoTapChi_id(const string&);
         //check valid thong tin
-        bool List_isNewTacGia(string);
-        bool List_isNewTapChi(string);
-        bool List_isNewNXB(string);
-        bool List_isNewBao(string);// string khong ton tai trong data
+        bool List_isNewTacGia(const string&);
+        bool List_isNewTapChi(const string&);
+        bool List_isNewNXB(const string&);
+        bool List_isNewBao(const string&);// string khong ton tai trong data
         friend int getTacGiaCount();
         //them mac dinh
         void List_addTacGia(string);
-        void List_addTapChi(string);
+        void List_addTapChi(const string&);
         void List_addBao(string);
         void List_addNXB(string);
         //them vao vi tri tuy chinh
@@ -90,7 +90,7 @@ class List{
         void List_outTapChi();
         void List_outNXB();
         void List_outBao();
-        void List_outInitialNum();
+        static void List_outInitialNum();
         // Xoa
         void List_deleteBaoTheoBao_id(string);
         void List_deleteBaoTheoViTri(int);

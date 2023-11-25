@@ -2,17 +2,6 @@
 #include<iostream>
 #include<iomanip>
 using namespace std;
-// void menu::info(){
-//     cout<<"\t\t\t-----------------------------------------------------------\n";
-//     cout<<"\t\t\t|                                                          |\n";
-//     cout<<"\t\t\t|                                                          |\n";
-//     cout<<"\t\t\t|                                                          |\n";
-//     cout<<"\t\t\t|                                                          |\n";
-//     cout<<"\t\t\t|                                                          |\n";
-//     cout<<"\t\t\t|                                                          |\n";
-//     cout<<"\t\t\t|                                                          |\n";
-//     cout<<"\t\t\t-----------------------------------------------------------\n";
-// }
 void menu::info(){
     cout<<endl;
     cout<<"\t\t\t -------------------------------------------------------------\n";
@@ -142,7 +131,6 @@ void menu::Menu_SoLuongBao(){
     cout<<"\t\t\t|     3. Theo nha xuat ban                                  |\n";
     cout<<"\t\t\t|     4. Theo nam xuat ban                                  |\n";
     cout<<"\t\t\t|     0. Thoat                                              |\n";
-  //  cout<<"\t\t\t|                                                           |\n";
     cout<<"\t\t\t -----------------------------------------------------------\n";
 }
 void menu::Menu_TimBao(){

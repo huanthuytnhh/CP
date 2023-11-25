@@ -1,6 +1,5 @@
 #include <iostream>
 #include<fstream>
-#include<iomanip>
 #include<algorithm>
 #include "List.h"
 //#include "hamKhac.h"
@@ -369,49 +368,49 @@ void MENU(List L)
                     getenter;
                     getline(cin,Tenbaibao);
                     xoaSpaces(Tenbaibao);
-                    if(L.List_timBaoTheoBao_ten(Tenbaibao)==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
+                    if(!L.List_timBaoTheoBao_ten(Tenbaibao)) cout << endl << "Khong tim thay bai bao!" << endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 2:
-                    if(L.List_timBaoTheoBao_id()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
+                    if(!L.List_timBaoTheoBao_id()) cout << endl << "Khong tim thay bai bao!" << endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 3:
-                    if(L.List_timBaoTheoTacGia_ten()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
+                    if(!L.List_timBaoTheoTacGia_ten()) cout << endl << "Khong tim thay bai bao!" << endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 4:
-                    if(L.List_timBaoTheoTacGia_id()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
+                    if(!L.List_timBaoTheoTacGia_id()) cout << endl << "Khong tim thay bai bao!" << endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 5:
-                    if(L.List_timBaoTheoTapChi_id()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
+                    if(!L.List_timBaoTheoTapChi_id()) cout << endl << "Khong tim thay bai bao!" << endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 6:
-                    if(L.List_timBaoTheoNXB_id()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
+                    if(!L.List_timBaoTheoNXB_id()) cout << endl << "Khong tim thay bai bao!" << endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 7:
-                    if(L.List_timBaoTheoNam()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
+                    if(!L.List_timBaoTheoNam()) cout << endl << "Khong tim thay bai bao!" << endl;
                     cout << endl;
                     system("pause");
                     system("cls");
@@ -503,10 +502,10 @@ void MENU(List L)
 int main() 
 {
 
-    List L;
+    List L{};
     // Lay so luong
     ifstream inFileNum("../Data/InitialNum.txt");
-    L.get_initialNum(inFileNum);
+    List::get_initialNum(inFileNum);
     //cout<<"check "<<List::TacGia_count<<" "<<List::TapChi_count<<" "<<List::Bao_count<<" "<<List::NXB_count<<endl;
     // Get data NXB
     ifstream inFilePub("../Data/Publisher.txt");

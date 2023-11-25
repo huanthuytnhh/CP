@@ -35,12 +35,13 @@ void List::List_getNXB(ifstream &in)
 {
     string temp;
     getline(in, temp, '\n');  // read panel
-    nxb = new NXB[NXB_count]; // cap phat dong mang nxb[NXB_count];
-    for (int i = 0; i < NXB_count; i++)
+  //  cout<<" check getNXB :"<<temp;
+    this->nxb = new NXB[List::NXB_count]; // cap phat dong mang nxb[NXB_count];
+    for (int i = 0; i < List::NXB_count; i++)
     {
          string temp2;
-        nxb[i].NXB_docfile(in);
-        cout<<"check "<<nxb[i].NXB_id<<" "<<nxb[i].NXB_ten<<endl;
+        this->nxb[i].NXB_docfile(in);
+       // cout<<"check "<<nxb[i].NXB_id<<" "<<nxb[i].NXB_ten<<endl;
         getline(in, temp2, '\n');
     }
 }
@@ -89,12 +90,12 @@ void List::List_displayBao()
          << left << setw(25) << "Tac Gia"
          << left << setw(45) << "Tap Chi"
          << left << setw(10) << "Thoi Gian" << endl;
-    cout << "---------------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
     for (int i = 0; i < Bao_count; i++)
     {
         cout << left << setw(15) << b[i].Bao_id
              << left << setw(65) << b[i].Bao_ten
-             << left << setw(25) << List_getTacGia_tenTheoTacGia_id(b[i].Bao_id)
+             << left << setw(25) << List_getTacGia_tenTheoTacGia_id(b[i].TacGia_id)
              << left << setw(45) << List_getTapChi_tenTheoTapChi_id(b[i].TapChi_id)
              << left << setw(10) << b[i].ThoiGianCongBo << endl;
     }
@@ -105,8 +106,8 @@ void List::List_displayTapChi()
          << left << setw(15) << "Ma tap chi"
          << left << setw(50) << "Ten tap chi"
          << left << setw(30) << "Ten tong bien tap"
-         << left << setw(15) << "Ma NXB";
-    cout << "---------------------------------------------------------------------------" << endl;
+         << left << setw(15) << "Ma NXB"<<endl;
+    cout << "------------------------------------------------------------------------------------------------------" << endl;
     for (int i = 0; i < TapChi_count; i++)
     {
         cout << left << setw(15) << tc[i].TapChi_id
@@ -126,7 +127,7 @@ void List::List_displayTacGia()
          << left << setw(30) << "Noi cong tac"
          << left << setw(30) << "Linh vuc"
          << left << setw(15) << "Trinh do" << endl;
-    cout << "---------------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------------------------------------" << endl;
     for (int i = 0; i < TacGia_count; i++)
     {
         cout << left << setw(15) << tg[i].TacGia_id
@@ -142,14 +143,15 @@ void List::List_displayNXB()
     cout << endl
          << left << setw(15) << "Ma NXB"
          << left << setw(30) << "Ten NXB" << endl;
-    cout << "---------------------------------------------------------------------------" << endl;
+    cout << "------------------------------------------------------------------------------------------------------" << endl;
 
-    for (int i = 0; i < NXB_count; i++)
+    for (int i = 0; i < List::NXB_count; i++)
     {
-        cout<<nxb[i];
+        cout << left << setw(15) << nxb[i].NXB_id
+          << left << setw(30) << nxb[i].NXB_ten << endl;
     }
 }
-string List::List_getTacGia_hoTheoTacGia_id(string TacGia_id)
+string List::List_getTacGia_hoTheoTacGia_id(const string& TacGia_id)
 {
     for (int i = 0; i < TacGia_count; i++)
     {
@@ -158,7 +160,7 @@ string List::List_getTacGia_hoTheoTacGia_id(string TacGia_id)
     }
     return "NULL";
 }
-string List::List_getTacGia_tenTheoTacGia_id(string TacGia_id)
+string List::List_getTacGia_tenTheoTacGia_id(const string& TacGia_id)
 {
     for (int i = 0; i < TacGia_count; i++)
     {
@@ -167,7 +169,7 @@ string List::List_getTacGia_tenTheoTacGia_id(string TacGia_id)
     }
     return "NULL";
 }
-string List::List_getTapChi_tenTheoTapChi_id(string TapChi_id)
+string List::List_getTapChi_tenTheoTapChi_id(const string& TapChi_id)
 {
     for (int i = 0; i < TapChi_count; i++)
     {
@@ -176,7 +178,7 @@ string List::List_getTapChi_tenTheoTapChi_id(string TapChi_id)
     }
     return "NULL";
 }
-string List::List_getNXB_idTheoTapChi_id(string TapChi_id)
+string List::List_getNXB_idTheoTapChi_id(const string& TapChi_id)
 {
     for (int i = 0; i < TapChi_count; i++)
     {
@@ -435,7 +437,7 @@ void List::List_setTapChi_general(menu m, TapChi &a)
 
     } while (choice != 0);
 }
-bool List::List_isNewTacGia(string TacGiaID)
+bool List::List_isNewTacGia(const string& TacGiaID)
 {
     for (int i = 0; i < TacGia_count; i++)
     {
@@ -444,7 +446,7 @@ bool List::List_isNewTacGia(string TacGiaID)
     }
     return true;
 }
-bool List::List_isNewTapChi(string TapChiID)
+bool List::List_isNewTapChi(const string& TapChiID)
 {
     for (int i = 0; i < TapChi_count; i++)
     {
@@ -453,7 +455,7 @@ bool List::List_isNewTapChi(string TapChiID)
     }
     return true;
 }
-bool List::List_isNewNXB(string NXBID)
+bool List::List_isNewNXB(const string& NXBID)
 {
     for (int i = 0; i < NXB_count; i++)
     {
@@ -462,7 +464,7 @@ bool List::List_isNewNXB(string NXBID)
     }
     return true;
 }
-bool List::List_isNewBao(string BaoID)
+bool List::List_isNewBao(const string& BaoID)
 {
     for (int i = 0; i < Bao_count; i++)
     {
@@ -476,12 +478,12 @@ void List::List_addTacGia(string TacGiaID)
     transform(TacGiaID.begin(), TacGiaID.end(), TacGiaID.begin(), ::toupper);
     if (List_isNewTacGia(TacGiaID))
     {
-        this->TacGia_count++;
-        int n = this->TacGia_count;
+        List::TacGia_count++;
+        int n = List::TacGia_count;
         TacGia a;
         a.TacGia_id = TacGiaID;
         cin >> a;
-        TacGia *tg2=new TacGia[n - 1];
+        auto *tg2=new TacGia[n - 1];
         for (int i = 0; i < n - 1; i++)
             tg2[i] = this->tg[i];
         delete[] this->tg;
@@ -490,7 +492,7 @@ void List::List_addTacGia(string TacGiaID)
             this->tg[i] = tg2[i];
        this->tg[n - 1] = a;
         this->List_outTacGia();
-        this->List_outInitialNum();
+        List::List_outInitialNum();
         cout << endl
              << "Da them thanh cong" << endl;
     }
@@ -508,8 +510,8 @@ void List::List_addNXB(string NXBID)
         NXB a;
         a.NXB_id = NXBID;
         cin >> a;
-        this->NXB_count++;
-        int n = this->NXB_count;
+        List::NXB_count++;
+        int n = List::NXB_count;
         NXB *nxb2=new NXB[n - 1];
         for (int i = 0; i < n - 1; i++)
             nxb2[i] = this->nxb[i];
@@ -519,7 +521,7 @@ void List::List_addNXB(string NXBID)
             this->nxb[i] = nxb2[i];
         this->nxb[n - 1] = a;
         this->List_outNXB();
-        this->List_outInitialNum();
+        List::List_outInitialNum();
         cout << "Da them thanh cong" << endl;
     }
     else
@@ -527,11 +529,11 @@ void List::List_addNXB(string NXBID)
         cout << "Nha xuat ban da ton tai" << endl;
     }
 }
-void List::List_addTapChi(string TapChiID)
+void List::List_addTapChi(const string& TapChiID)
 {
     if (List_isNewTapChi(TapChiID))
     {
-        this->TapChi_count++;
+        List::TapChi_count++;
         TapChi a;
         a.TapChi_id = TapChiID;
         cin >> a;
@@ -540,8 +542,8 @@ void List::List_addTapChi(string TapChiID)
             cout << "Nha xuat ban ban vua nhap chua ton tai,va da duoc them " << endl;
             List_addNXB(a.NXB_id);
         }
-        int n = this->TacGia_count;
-        TapChi *tc2=new TapChi[n - 1];
+        int n = List::TacGia_count;
+        auto *tc2=new TapChi[n - 1];
         for (int i = 0; i < n - 1; i++)
             tc2[i] = tc[i];
         delete[] this->tc;
@@ -562,7 +564,7 @@ void List::List_addBao(string BaoID)
     transform(BaoID.begin(), BaoID.end(), BaoID.begin(), ::toupper);
     if (this->List_isNewBao(BaoID)) // Nếu là bài báo mới
     {
-        this->Bao_count++; // Tăng số lượng bài báo lên 1
+        List::Bao_count++; // Tăng số lượng bài báo lên 1
         Bao a;       // New TacGia
         a.Bao_id = BaoID;
         cin >> a;
@@ -577,21 +579,21 @@ void List::List_addBao(string BaoID)
             cout << endl<< "- Nhap thong tin tap chi:" << endl;
             List_addTapChi(a.TapChi_id); // nếu tạp chí nhập vào là tạp chí mới thì thêm thông tin tạp chí mới vào
         }
-        int n = this->Bao_count;
-        Bao *b2=new Bao[this->Bao_count - 1];               // Mảng tĩnh sao chép tạm danh sách bài báo khi chưa thêm
-        for (int i = 0; i < this->Bao_count - 1; i++) // Sao chép bài báo từ List sang mảng tĩnh
+        int n = List::Bao_count;
+        Bao *b2=new Bao[List::Bao_count - 1];               // Mảng tĩnh sao chép tạm danh sách bài báo khi chưa thêm
+        for (int i = 0; i < List::Bao_count - 1; i++) // Sao chép bài báo từ List sang mảng tĩnh
         {
             b2[i] = this->b[i];
         }
         delete[] this->b;     // Xóa danh sách bài báo cũ
-        this->b = new Bao[this->Bao_count]; // Tạo mảng động danh sách bài báo mới cho list
-        this->b[this->Bao_count - 1] = a;   // Cho bài báo mới thêm vào cuối danh sách
-        for (int i = 0; i < this->Bao_count - 1; i++)
+        this->b = new Bao[List::Bao_count]; // Tạo mảng động danh sách bài báo mới cho list
+        this->b[List::Bao_count - 1] = a;   // Cho bài báo mới thêm vào cuối danh sách
+        for (int i = 0; i < List::Bao_count - 1; i++)
         {
             this->b[i] = b2[i]; // Chép từ mảng tạm sang danh sách chính
         }
         this->List_outTacGia();     // Update vào file dữ liệu bài báo
-        this->List_outInitialNum(); // Update file số lượng
+        List::List_outInitialNum(); // Update file số lượng
         cout << endl<< "Da them thanh cong!" << endl<< endl;
     }
     else
@@ -602,7 +604,7 @@ void List::List_insertBao(string BaoID)
     transform(BaoID.begin(), BaoID.end(), BaoID.begin(), ::toupper);
     if (this->List_isNewBao(BaoID)) // Nếu là bài báo mới
     {
-        this->Bao_count++;
+        List::Bao_count++;
         int pos;
         cout << "Moi nhap vi tri muon them" << endl;
         cin >> pos; // Tăng số lượng bài báo lên 1
@@ -622,7 +624,7 @@ void List::List_insertBao(string BaoID)
                  << "- Nhap thong tin tap chi:" << endl;
             List_addTapChi(a.TapChi_id); // nếu tạp chí nhập vào là tạp chí mới thì thêm thông tin tạp chí mới vào
         }
-        int n = this->Bao_count;
+        int n = List::Bao_count;
         Bao *b2=new Bao[n - 1];               // Mảng tĩnh sao chép tạm danh sách bài báo khi chưa thêm
         for (int i = 0; i < n - 1; i++) // Sao chép bài báo từ List sang mảng tĩnh
         {
@@ -640,7 +642,7 @@ void List::List_insertBao(string BaoID)
             this->b[i + 1] = b2[i]; // Chép từ mảng tạm sang danh sách chính
         }
         this->List_outTacGia();     // Update vào file dữ liệu bài báo
-        this->List_outInitialNum(); // Update file số lượng
+        List::List_outInitialNum(); // Update file số lượng
         cout << endl<< "Da them thanh cong!" << endl<< endl;
     }
     else
@@ -794,7 +796,7 @@ void List::List_deleteBaoTheoBao_id(string id)
              << "Bai bao khong ton tai" << endl;
     else
     {
-        int pos;
+        int pos = 0;
         for (int i = 0; i < Bao_count; i++)
         {
             if (b[i].Bao_id == id)
@@ -862,7 +864,7 @@ void List::List_deleteBaoTheoViTri(int pos)
 }
 void List::List_deleteTacGiaTheoTacGia_id(string id)
 {
-    char choice;
+    char choice = 0;
     transform(id.begin(), id.end(), id.begin(), ::toupper);
     if (List_isNewTacGia(id))
     {
@@ -870,7 +872,7 @@ void List::List_deleteTacGiaTheoTacGia_id(string id)
     }
     else
     {
-        int pos;
+        int pos = 0;
         int n = TacGia_count;
         for (int i = 0; i < n; i++)
         {
@@ -890,7 +892,7 @@ void List::List_deleteTacGiaTheoTacGia_id(string id)
         }
         if (choice == 'Y')
         {
-            TacGia *tg2=new TacGia[n - 1];
+            auto *tg2=new TacGia[n - 1];
             for (int i = 0; i < pos; i++)
             {
                 tg2[i] = tg[i];
@@ -900,7 +902,7 @@ void List::List_deleteTacGiaTheoTacGia_id(string id)
             {
                 tg2[i] = tg[i + 1];
             }
-            this->TacGia_count--;
+            List::TacGia_count--;
             delete[] tg;
             tg = new TacGia[n - 1];
             for (int i = 0; i < n - 1; i++)
@@ -922,7 +924,7 @@ void List::List_deleteTapChiTheoTapChi_id(string id)
              << "Tap chi chua ton tai!" << endl;
     else
     {
-        int pos;
+        int pos = 0;
         char c = 'C';
         for (int i = 0; i < TapChi_count; i++)
         {
@@ -941,14 +943,14 @@ void List::List_deleteTapChiTheoTapChi_id(string id)
         }
         if (c == 'C')
         {
-            TapChi *newTapChi=new TapChi[this->TapChi_count];        // Mảng tĩnh sao chép tạm danh sách TẠP CHÍ khi chưa xóa
-            for (int i = 0; i < this->TapChi_count; i++) // Sao chép TẠP CHÍ từ List sang mảng tĩnh
+            auto *newTapChi=new TapChi[List::TapChi_count];        // Mảng tĩnh sao chép tạm danh sách TẠP CHÍ khi chưa xóa
+            for (int i = 0; i < List::TapChi_count; i++) // Sao chép TẠP CHÍ từ List sang mảng tĩnh
             {
                 newTapChi[i] = this->tc[i];
             }
             delete[] this->tc;                         // Xóa danh sách TẠP CHÍ cũ
-            this->TapChi_count--;                      // Giảm SL TẠP CHÍ đi 1
-            this->tc = new TapChi[this->TapChi_count]; // Tạo mảng động danh sách TẠP CHÍ mới cho list
+            List::TapChi_count--;                      // Giảm SL TẠP CHÍ đi 1
+            this->tc = new TapChi[List::TapChi_count]; // Tạo mảng động danh sách TẠP CHÍ mới cho list
             for (int i = 0; i < pos; i++)
             {
                 this->tc[i] = newTapChi[i]; // Chép TẠP CHÍ từ vị trí 0->pos-1 từ mảng tạm sang danh sách chính
@@ -973,7 +975,7 @@ void List::List_deleteNXBTheoNXB_id(string id)
              << "NXB chua ton tai!" << endl;
     else
     {
-        int pos;
+        int pos = 0;
         char c = 'C';
         for (int i = 0; i < NXB_count; i++)
         {
@@ -992,14 +994,14 @@ void List::List_deleteNXBTheoNXB_id(string id)
         }
         if (c == 'C')
         {
-            NXB *newNXB=new NXB[this->NXB_count];              // Mảng tĩnh sao chép tạm danh sách NXB khi chưa xóa
-            for (int i = 0; i < this->NXB_count; i++) // Sao chép NXB từ List sang mảng tĩnh
+            NXB *newNXB=new NXB[List::NXB_count];              // Mảng tĩnh sao chép tạm danh sách NXB khi chưa xóa
+            for (int i = 0; i < List::NXB_count; i++) // Sao chép NXB từ List sang mảng tĩnh
             {
                 newNXB[i] = this->nxb[i];
             }
             delete[] this->nxb;                   // Xóa danh sách NXB cũ
-            this->NXB_count--;                    // Giảm SL NXB đi 1
-            this->nxb = new NXB[this->NXB_count]; // Tạo mảng động danh sách NXB mới cho list
+            List::NXB_count--;                    // Giảm SL NXB đi 1
+            this->nxb = new NXB[List::NXB_count]; // Tạo mảng động danh sách NXB mới cho list
             for (int i = 0; i < pos; i++)
             {
                 this->nxb[i] = newNXB[i]; // Chép NXB từ vị trí 0->pos-1 từ mảng tạm sang danh sách chính
@@ -1222,7 +1224,7 @@ bool List::List_timBaoTheoTacGia_id()
     {
         if(b[i].TacGia_id == temp)
         {
-            if (flag==false) 
+            if (!flag)
             {
                 cout <<endl<< left << setw(15)<<"Ma bao"<< left << setw(65)<<"Ten cong bo"<< left << setw(25)<<"Tac gia"<< left << setw(45);
                 cout <<"Tap chi"<< left << setw(10)<<"Thoi gian"<<endl;

@@ -38,7 +38,7 @@ void TacGia::TacGia_docfile(ifstream& i){
     getline(i,TacGia_ten,'|');
     getline(i,TacGia_congtac,'|');
     getline(i,TacGia_linhvuc,'|');
-    getline(i,TacGia_trinhdo,'|');
+    getline(i,TacGia_trinhdo,',');
 }
 istream& operator>>(istream& i,TacGia& a)
 {

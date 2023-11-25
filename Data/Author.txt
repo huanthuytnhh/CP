@@ -4,6 +4,7 @@ AU2|Nguyen Thi Quynh|Hoa|DHNN|Ngon ngu Anh va Dich thuat|PGS TS,
 AU3|Luu Quy|Khuong|DHNN|Ngon ngu hoc va van hoc|PGS TS,
 AU4|Dinh Thanh|Viet|DHDN|Ky thuat dien|PGS TS,
 AU5|Doan Quang|Vinh|DHDN|Ky thuat dien - Tu dong|PGS TS,
+AU6|Nguyen The|Huy|DHDN|CNTT|GS
 AU7|phan khanh|ngan|dhkt|ki thuat|TS,
 AU8|Chu Thi|Thu|DHDN|Kinh te hoc|TS,
 AU9|Le Kim|Hung|DHBK|Ky thuat dien|GS TS,
