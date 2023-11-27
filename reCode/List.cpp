@@ -748,7 +748,7 @@ void List::List_outTapChi()
 void List::List_outNXB()
 {
     fstream data;
-    data.open("../Data/nxblisher.txt", ios::app | ios::out);
+    data.open("../Data/Publisher.txt", ios::app | ios::out);
     data << "Ma NXB|Ten NXB\n";
     for (int i = 0; i < NXB_count; i++)
     {
