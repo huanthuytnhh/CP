@@ -5,19 +5,19 @@ using namespace std;
 class menu{
     public:
         void info(); // Thong tin nguoi lam 
-        void mainMenu();
-        void Menu_Display();
-        void Menu_ChinhSua();
-        void Menu_Them();  
-        void Menu_Xoa();
-        void Menu_SoLuongBao();
-        void Menu_TimBao();
-        void Menu_SapXepBao();
+        int mainMenu();
+        int Menu_Display();
+        int Menu_ChinhSua();
+        int Menu_Them();  
+        int Menu_Xoa();
+        int Menu_SoLuongBao();
+        int Menu_TimBao();
+        int Menu_SapXepBao();
         
-        void Menu2_ThemBao();
+        int Menu2_ThemBao();
 
-        void Menu2_ChinhSuaBao(string);
-        void Menu2_ChinhSuaTapChi(string);
-        void Menu2_ChinhSuaTacGia(string);
+        int Menu2_ChinhSuaBao(string);
+        int Menu2_ChinhSuaTapChi(string);
+        int Menu2_ChinhSuaTacGia(string);
         
 };

@@ -1,4 +1,4 @@
-Bao|13
-TacGia|22
-TapChi|6
-NXB|7
+Bao|19
+TacGia|27
+TapChi|8
+NXB|9

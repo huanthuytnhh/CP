@@ -30,6 +30,7 @@ class TacGia{
         friend ostream &operator<<(ostream&,const TacGia&);
 //--------------SETTER-------------------------
         void setTacGia_ten();
+        void setTacGia_ho();
         void setTacGia_congtac();
         void setTacGia_linhvuc();
         void setTacGia_trinhdo();

@@ -33,58 +33,59 @@ string TacGia::getTacGia_id(){
 void TacGia::TacGia_docfile(ifstream& i){
     string dummy;
     //getline(i,dummy,'\n');
-    getline(i,TacGia_id,'|');
-    getline(i,TacGia_ho,'|');
-    getline(i,TacGia_ten,'|');
-    getline(i,TacGia_congtac,'|');
-    getline(i,TacGia_linhvuc,'|');
-    getline(i,TacGia_trinhdo,',');
+    getline(i,TacGia_id,'|'); xoaSpaces(this->TacGia_id);
+    getline(i,TacGia_ho,'|');xoaSpaces(this->TacGia_ho);
+    getline(i,TacGia_ten,'|');xoaSpaces(this->TacGia_ten);
+    getline(i,TacGia_congtac,'|');xoaSpaces(this->TacGia_congtac);
+    getline(i,TacGia_linhvuc,'|');xoaSpaces(this->TacGia_linhvuc);
+    getline(i,TacGia_trinhdo,',');xoaSpaces(this->TacGia_trinhdo);
 }
 istream& operator>>(istream& i,TacGia& a)
 {
-    cout<<endl<<"- Nhap ho : ";
+    cout<<endl<<"- Nhap ho cua Tac Gia: ";getenter;
     getline(i,a.TacGia_ho); xoaSpaces(a.TacGia_ho);
-    getenter;
-    cout<<"- Nhap ten : ";
+    
+    cout<<"- Nhap ten cua Tac Gia: ";
     i>>a.TacGia_ten;xoaSpaces(a.TacGia_ten);
-    getenter;
+    
     cout<<"- Nhap noi cong tac : [DH...]";
     i>>a.TacGia_congtac;
-    getenter;
-    cout<<"- Nhap linh vuc nghien cuu : ";
+    
+    cout<<"- Nhap linh vuc nghien cuu : ";getenter;
     getline(i,a.TacGia_linhvuc);
-    getenter;
-    cout<<"- Nhap trinh do : ";
+    
+    cout<<"- Nhap trinh do : ";getenter;
     getline(i,a.TacGia_trinhdo);
     return i;
 }
 ostream& operator<<(ostream& o,const TacGia& a)
 {
-    o<<(ios::left)<<setw(15)<<a.TacGia_id
-    <<(ios::left)<<setw(20)<<a.TacGia_ho
-    <<(ios::left)<<setw(15)<<a.TacGia_ten
-    <<(ios::left)<<setw(15)<<a.TacGia_congtac
-    <<(ios::left)<<setw(30)<<a.TacGia_linhvuc
-    <<(ios::left)<<setw(10)<<a.TacGia_trinhdo<<endl;
+    o << left << setw(15) << a.TacGia_id << "|"
+             << left << setw(30) << a.TacGia_ho << "|"
+             << left << setw(15) << a.TacGia_ten << "|"
+             << left << setw(30) << a.TacGia_congtac << "|"
+             << left << setw(30) << a.TacGia_linhvuc << "|"
+             << left << setw(15) << a.TacGia_trinhdo << ",\n";
     return o;
 }
 void TacGia::setTacGia_ten(){
-    cout<<endl<<"- Nhap ho  : ";
-    getline(cin,this->TacGia_ho);
-    xoaSpaces(this->TacGia_ho);
-    cout<<endl<<"- Nhap ten  : ";
-    getline(cin,this->TacGia_ten);
-    xoaSpaces(this->TacGia_ten);
+    
+    cout<<endl<<"- Nhap ten  : ";getenter;getline(cin,this->TacGia_ten);
+    xoaSpaces(this->TacGia_ten);cout<<"\n"; 
+}
+void TacGia::setTacGia_ho(){
+    cout<<"- Nhap ho  : ";getenter;getline(cin,this->TacGia_ho);
+    xoaSpaces(this->TacGia_ho);cout<<"\n";getenter; 
 }
 void TacGia::setTacGia_congtac(){
-    cout<<endl<<"- Nhap noi cong tac : ";
+    cout<<endl<<"- Nhap noi cong tac : ";getenter;
     getline(cin,this->TacGia_congtac);
 }
 void TacGia::setTacGia_linhvuc(){
-    cout<<endl<<"-Nhap linh vuc lam viec : ";
+    cout<<endl<<"-Nhap linh vuc lam viec : ";getenter;
     getline(cin,this->TacGia_linhvuc);
 }
 void TacGia::setTacGia_trinhdo(){
-    cout<<endl<<"-Nhap trinh do cua tac gia :";
+    cout<<endl<<"-Nhap trinh do cua tac gia :";getenter;
     getline(cin,this->TacGia_trinhdo);
 }

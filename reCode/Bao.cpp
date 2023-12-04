@@ -17,39 +17,38 @@ int Bao::getThoiGianCongBo(){
 void Bao::Bao_docfile(ifstream&i){
     string dummy;
     //getline(i,dummy,'\n');
-    getline(i,Bao_id,'|');
-    getline(i,Bao_ten,'|');
-    getline(i,TacGia_id,'|');
-    getline(i,TapChi_id,'|');
-    i>>ThoiGianCongBo;
-    getline(i,dummy,',');// ??????
+    getline(i,Bao_id,'|'); xoaSpaces(this->Bao_id);
+    getline(i,Bao_ten,'|'); xoaSpaces(this->Bao_ten);
+    getline(i,TacGia_id,'|');xoaSpaces(this->TacGia_id);
+    getline(i,TapChi_id,'|');xoaSpaces(this->TapChi_id);
+    i>>ThoiGianCongBo; getline(i,dummy,',');// ??????
 }
 ostream& operator<<(ostream&o,const Bao& a){
-    o<<left<<setw(15)<<a.Bao_id
-    <<left<<setw(70)<<a.Bao_ten
-    <<left<<setw(10)<<a.TacGia_id
-    <<left<<setw(10)<<a.TapChi_id
-    <<left<<setw(10)<<a.ThoiGianCongBo<<endl;
+    o << left << setw(15) << a.Bao_id << "|"
+             << left << setw(65) << a.Bao_ten << "|"
+             << left << setw(25) << (a.TacGia_id) << "|"
+             << left << setw(45) << (a.TapChi_id) << "|"
+             << left << setw(10) << a.ThoiGianCongBo << ",\n";
     return o;
 }
 istream& operator>>(istream& i,Bao& a){
-    string TacGia,TapChi;
-    cout<<endl<<"- Nhap ten bao : ";
-    getline(i,a.Bao_ten); xoaSpaces(a.Bao_ten);
-    getenter;
+    string TacGia,TapChi,Baoten;
+    cout<<"- Nhap ten bao : ";getenter;
+    getline(i,Baoten); xoaSpaces(Baoten);//getenter;
+    a.Bao_ten=Baoten;
     cout<<"- Nhap ma tac gia : ";
     i>> TacGia; transform(TacGia.begin(),TacGia.end(),TacGia.begin(),::toupper);
     
-    a.TacGia_id=TacGia;getenter;
+    a.TacGia_id=TacGia;//getenter;
     cout<<"- Nhap ma tap chi : ";
     i>>TapChi; transform(TapChi.begin(),TapChi.end(),TapChi.begin(),::toupper);
-    a.TapChi_id=TapChi;getenter;
+    a.TapChi_id=TapChi;//getenter;
     cout<<"- Nhap thoi gian cong bo : ";
-    i>>a.ThoiGianCongBo;getenter;
+    i>>a.ThoiGianCongBo;//getenter;
     return i;
 }
 void Bao::setBao_ten(){
-    cout<<endl<<"-Nhap ten :";
+    cout<<endl<<"-Nhap ten :";getenter;
     getline(cin,this->Bao_ten);
     xoaSpaces(Bao_ten);
 }

@@ -1,11 +1,25 @@
 #include <iostream>
 #include<fstream>
+#include<iomanip>
 #include<algorithm>
 #include "List.h"
 //#include "hamKhac.h"
 #include<string>
 using namespace std;
 menu m;
+string txt=R"(
+ .----------------.  .----------------.  .----------------.  .-----------------. .----------------.   .----------------.  .----------------.  .----------------. 
+| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. || .--------------. || .--------------. |
+| |  _________   | || |  ____  ____  | || |      __      | || | ____  _____  | || |  ___  ____   | | | |  ____  ____  | || |     ____     | || | _____  _____ | |
+| | |  _   _  |  | || | |_   ||   _| | || |     /  \     | || ||_   \|_   _| | || | |_  ||_  _|  | | | | |_  _||_  _| | || |   .'    `.   | || ||_   _||_   _|| |
+| | |_/ | | \_|  | || |   | |__| |   | || |    / /\ \    | || |  |   \ | |   | || |   | |_/ /    | | | |   \ \  / /   | || |  /  .--.  \  | || |  | |    | |  | |
+| |     | |      | || |   |  __  |   | || |   / ____ \   | || |  | |\ \| |   | || |   |  __'.    | | | |    \ \/ /    | || |  | |    | |  | || |  | '    ' |  | |
+| |    _| |_     | || |  _| |  | |_  | || | _/ /    \ \_ | || | _| |_\   |_  | || |  _| |  \ \_  | | | |    _|  |_    | || |  \  `--'  /  | || |   \ `--' /   | |
+| |   |_____|    | || | |____||____| | || ||____|  |____|| || ||_____|\____| | || | |____||____| | | | |   |______|   | || |   `.____.'   | || |    `.__.'    | |
+| |              | || |              | || |              | || |              | || |              | | | |              | || |              | || |              | |
+| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' | | '--------------' || '--------------' || '--------------' |
+ '----------------'  '----------------'  '----------------'  '----------------'  '----------------'   '----------------'  '----------------'  '----------------' 
+            )";
 #define getenter fflush(stdin);
 void MENU(List L)
 {
@@ -19,21 +33,22 @@ void MENU(List L)
     int temp;
     do
     {
-        m.mainMenu();
-        cin>>temp;
+        temp=m.mainMenu();
+       // cin>>temp;
         switch (temp)
         {
         case 0:
             temp =0;
-            cout<<"Chuc ban mot ngay moi tot lanh!"<<endl;
+            cout<<"\t\t\t Xin cam on vi da trai nghiem san pham. Chuc ban mot ngay moi tot lanh !"<<endl;
+            cout<<txt;
             break;
         case 1:
             int temp1;
             system("cls");
             do
             {
-                m.Menu_Display();
-                cin>>temp1;
+                temp1=m.Menu_Display();
+               // cin>>temp1;
                 switch (temp1)
                     {
                     case 0:
@@ -44,28 +59,28 @@ void MENU(List L)
                         L.List_displayBao();
                         cout << endl;
                         system("pause");
-                        system("cls");
+                      //  system("cls");
                         temp1 =0;
                         break;
                     case 2:
                         L.List_displayTacGia();
                         cout << endl;
                         system("pause");
-                        system("cls");
+                      //  system("cls");
                         temp1 =0;
                         break;
                     case 3:
                         L.List_displayTapChi();
                         cout << endl;
                         system("pause");
-                        system("cls");
+                      //  system("cls");
                         temp1 =0;
                         break;
                     case 4:
                         L.List_displayNXB();
                         cout << endl;
                         system("pause");
-                        system("cls");
+                       // system("cls");
                         temp1 =0;
                         break;
                     default:
@@ -83,8 +98,8 @@ void MENU(List L)
             int temp2;
             do
             {
-                m.Menu_ChinhSua();
-                cin>>temp2;
+                temp2=m.Menu_ChinhSua();
+               // cin>>temp2;
                 switch (temp2)
                 {
                 case 0:
@@ -137,8 +152,8 @@ void MENU(List L)
             int temp3;
             do
             {
-                m.Menu_Them();
-                cin>>temp3;
+                temp3=m.Menu_Them();
+                //cin>>temp3;
                 switch (temp3)
                 {
                 case 0:
@@ -150,8 +165,8 @@ void MENU(List L)
                     int case1;
                     do 
                     {   
-                        m.Menu2_ThemBao();
-                        cin >> case1;
+                        case1=m.Menu2_ThemBao();
+                        
                         switch (case1)
                         {
                             case 1:
@@ -231,8 +246,8 @@ void MENU(List L)
             int temp4;
             do
             {
-                m.Menu_Xoa();
-                cin>>temp4;
+                temp4=m.Menu_Xoa();
+                //cin>>temp4;
                 switch (temp4)
                 {
                 case 0:
@@ -254,6 +269,7 @@ void MENU(List L)
                     cout << endl << "- Nhap vi tri bai bao can xoa: ";
                     cin >> pos;
                     L.List_deleteBaoTheoViTri(pos-1);
+                    L.List_updateCount();
                     cout << endl;
                     system("pause");
                     system("cls");
@@ -264,6 +280,7 @@ void MENU(List L)
                     cin >>Matacgia;
                     xoaSpaces(Matacgia);
                     L.List_deleteTacGiaTheoTacGia_id(Matacgia);
+                    L.List_updateCount();
                     cout << endl;
                     system("pause");
                     system("cls");
@@ -274,6 +291,7 @@ void MENU(List L)
                     cin >>Matapchi;
                     xoaSpaces(Matapchi);
                     L.List_deleteTapChiTheoTapChi_id(Matapchi);
+                    L.List_updateCount();
                     cout << endl;
                     system("pause");
                     system("cls");
@@ -284,6 +302,7 @@ void MENU(List L)
                     cin >>MaNXB;
                     xoaSpaces(MaNXB);
                     L.List_deleteNXBTheoNXB_id(MaNXB);
+                    L.List_updateCount();
                     cout << endl;
                     system("pause");
                     system("cls");
@@ -303,8 +322,8 @@ void MENU(List L)
             system("cls");
             do
             {
-                m.Menu_SoLuongBao();
-                cin>>temp5;
+                temp5=m.Menu_SoLuongBao();
+                //cin>>temp5;
                 switch (temp5)
                 {
                 case 0:
@@ -355,8 +374,8 @@ void MENU(List L)
             int temp6;
             do
             {
-                m.Menu_TimBao();
-                cin>>temp6;
+                temp6=m.Menu_TimBao();
+                //cin>>temp6;
                 switch (temp6)
                 {
                 case 0:
@@ -368,49 +387,49 @@ void MENU(List L)
                     getenter;
                     getline(cin,Tenbaibao);
                     xoaSpaces(Tenbaibao);
-                    if(!L.List_timBaoTheoBao_ten(Tenbaibao)) cout << endl << "Khong tim thay bai bao!" << endl;
+                    if(L.List_timBaoTheoBao_ten(Tenbaibao)==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 2:
-                    if(!L.List_timBaoTheoBao_id()) cout << endl << "Khong tim thay bai bao!" << endl;
+                    if(L.List_timBaoTheoBao_id()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 3:
-                    if(!L.List_timBaoTheoTacGia_ten()) cout << endl << "Khong tim thay bai bao!" << endl;
+                    if(L.List_timBaoTheoTacGia_ten()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 4:
-                    if(!L.List_timBaoTheoTacGia_id()) cout << endl << "Khong tim thay bai bao!" << endl;
+                    if(L.List_timBaoTheoTacGia_id()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 5:
-                    if(!L.List_timBaoTheoTapChi_id()) cout << endl << "Khong tim thay bai bao!" << endl;
+                    if(L.List_timBaoTheoTapChi_id()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 6:
-                    if(!L.List_timBaoTheoNXB_id()) cout << endl << "Khong tim thay bai bao!" << endl;
+                    if(L.List_timBaoTheoNXB_id()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
                     cout << endl;
                     system("pause");
                     system("cls");
                     temp6 =0;
                     break;
                 case 7:
-                    if(!L.List_timBaoTheoNam()) cout << endl << "Khong tim thay bai bao!" << endl;
+                    if(L.List_timBaoTheoNam()==false) cout << endl <<"Khong tim thay bai bao!"<<endl;
                     cout << endl;
                     system("pause");
                     system("cls");
@@ -428,8 +447,8 @@ void MENU(List L)
             int temp7;
             do
             {   
-                m.Menu_SapXepBao();
-                cin>>temp7;
+                temp7=m.Menu_SapXepBao();
+                //cin>>temp7;
                 switch (temp7)
                 {
                 case 0:
@@ -502,11 +521,11 @@ void MENU(List L)
 int main() 
 {
 
-    List L{};
+    List L;
     // Lay so luong
     ifstream inFileNum("../Data/InitialNum.txt");
-    List::get_initialNum(inFileNum);
-    //cout<<"check "<<List::TacGia_count<<" "<<List::TapChi_count<<" "<<List::Bao_count<<" "<<List::NXB_count<<endl;
+    L.get_initialNum(inFileNum);
+    cout<<"check "<<List::TacGia_count<<" "<<List::TapChi_count<<" "<<List::Bao_count<<" "<<List::NXB_count<<endl;
     // Get data NXB
     ifstream inFilePub("../Data/Publisher.txt");
     if (inFilePub.fail()) cout << "Failed to open file";
@@ -528,8 +547,9 @@ int main()
     else L.List_getTacGia(inFileAuth);
    // cout<<List::tg[0].TacGia_ma;
     //Get number of article for author/journal/NXB list
+    
     L.List_updateCount();
-
+    system("pause");
     //PBL2 Information
     m.info();
 
